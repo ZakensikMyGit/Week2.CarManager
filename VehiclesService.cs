@@ -17,31 +17,12 @@ namespace Week2.CarManager
         public void AddNewVehicle()
         {
             Console.WriteLine("\nWybierz typ pojazdu: ");
-            foreach (TypeVehicles types in Enum.GetValues(typeof(TypeVehicles)))
+            foreach (VehicleType types in Enum.GetValues(typeof(VehicleType)))
             {
                 Console.WriteLine($"{(int)types}. {types}");
             }
-            TypeVehicles selectedType;
+            VehicleType selectedType;
             Enum.TryParse(Console.ReadLine(), out selectedType);
-
-            switch (selectedType)
-            {
-                case TypeVehicles.car:
-                    selectedType = TypeVehicles.car;
-                    break;
-                case TypeVehicles.bus:
-                    selectedType = TypeVehicles.bus;
-                    break;
-                case TypeVehicles.truck:
-                    selectedType = TypeVehicles.truck;
-                    break;
-                case TypeVehicles.other:
-                    selectedType = TypeVehicles.other;
-                    break;
-                default:
-                    Console.WriteLine("Nie ma takiego typu pojazdu w naszej bazie");
-                    break;
-            }
 
             Console.WriteLine("Podaj numer rejestracyjny:");
             string plateNumber = Console.ReadLine();

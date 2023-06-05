@@ -6,8 +6,8 @@
         {
             Console.WriteLine("Program do zarządzania pojazdami");
             VehiclesService vehiclesService = new VehiclesService();
-            bool exit = true;
-            while (exit)
+            bool isRunning = true;
+            while (isRunning)
             {
                 Console.WriteLine("Wybierz dostępną opcję");
                 Console.WriteLine("\n1. Dodaj pojazd");
@@ -20,9 +20,8 @@
                 if (choose == 0)
                 {
                     Console.WriteLine("Dziękujemy za skorzystanie z programu.");
-                    exit = false;
+                    isRunning = false;
                 }
-
                 switch (choose)
                 {
                     case 1:
@@ -35,18 +34,9 @@
                         vehiclesService.RemoveVehicle();
                         break;
                     default:
-                        Console.WriteLine("DEFAULT");
                         break;
                 }
-
-
-
-
-
-
-
             }
-
             Console.ReadLine();
         }
     }
