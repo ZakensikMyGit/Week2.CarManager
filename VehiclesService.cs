@@ -70,7 +70,6 @@ namespace Week2.CarManager
             {
                 Console.WriteLine("\n!!! Brak pojazdów !!! \n");
             }
-
         }
         public void ShowVehicles()
         {
