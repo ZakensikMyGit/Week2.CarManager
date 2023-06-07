@@ -10,12 +10,12 @@ namespace Week2.CarManager
     {
         public int Id { get; set; }
         public VehicleType Type { get; set; }
-        public string PlateNumber { get; set; }
+        public string? PlateNumber { get; set; } = "Epmty";
     }
     public enum VehicleType
     {
         Car = 1,
-        bus = 2,
+        Bus = 2,
         Truck = 3,
         Other = 4
     }

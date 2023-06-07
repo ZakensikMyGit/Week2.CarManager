@@ -4,16 +4,18 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Program do zarządzania pojazdami");
+            Console.WriteLine("-----------------------------------------------");
+            Console.WriteLine("\tProgram do zarządzania pojazdami");
+            Console.WriteLine("-----------------------------------------------\n");
             VehiclesService vehiclesService = new VehiclesService();
             bool isRunning = true;
             while (isRunning)
             {
-                Console.WriteLine("Wybierz dostępną opcję");
-                Console.WriteLine("\n1. Dodaj pojazd");
-                Console.WriteLine("2. Sprawdź stan pojazdów");
-                Console.WriteLine("3. Usuń pojazd");
-                Console.WriteLine("0. Wyjdź z programu");
+                Console.WriteLine("\n*** Wybierz dostępną opcję ***\n");
+                Console.WriteLine("(1) Dodaj pojazd");
+                Console.WriteLine("(2) Sprawdź stan pojazdów");
+                Console.WriteLine("(3) Usuń pojazd");
+                Console.WriteLine("(0) Wyjdź z programu");
 
                 int choose;
                 Int32.TryParse(Console.ReadLine(), out choose);
