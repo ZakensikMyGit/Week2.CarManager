@@ -4,6 +4,7 @@
     {
         static void Main(string[] args)
         {
+            
             Console.WriteLine("-----------------------------------------------");
             Console.WriteLine("\tProgram do zarządzania pojazdami");
             Console.WriteLine("-----------------------------------------------\n");
@@ -29,10 +30,10 @@
                     case 1:
                         vehiclesService.AddNewVehicle();
                         break;
-                        case 2:
-                            vehiclesService.ShowVehicles();
+                    case 2:
+                        vehiclesService.ShowVehicles();
                         break;
-                        case 3:
+                    case 3:
                         vehiclesService.RemoveVehicle();
                         break;
                     default:

@@ -8,6 +8,7 @@ namespace Week2.CarManager
 {
     public class VehiclesService
     {
+
         public List<Vehicles> VehiclesList { get; set; }
         public VehiclesService()
         {
@@ -21,8 +22,18 @@ namespace Week2.CarManager
             {
                 Console.WriteLine($"{(int)types}. {types}");
             }
-            VehicleType selectedType;
-            Enum.TryParse(Console.ReadLine(), out selectedType);
+
+            VehicleType selectedType = VehicleType.Car;
+            bool isTypeValid = false;
+            while (!isTypeValid)
+            {
+                string userInput = Console.ReadLine();
+                isTypeValid = Enum.TryParse(userInput, out selectedType) && Enum.IsDefined(typeof(VehicleType), selectedType);
+                if (!isTypeValid)
+                {
+                    Console.WriteLine("Niepoprawny wybór. Wybierz prawidłowy typ pojazdu.");
+                }
+            }
 
             Console.WriteLine("Podaj numer rejestracyjny:");
             var plateNumber = Console.ReadLine();
@@ -35,8 +46,11 @@ namespace Week2.CarManager
             VehiclesList.Add(vehicles);
         }
 
+
+
         public void RemoveVehicle()
         {
+
             if (VehiclesList.Count > 0)
             {
                 Console.WriteLine($"\nKtóry pojazd chcesz usunąć z bazy: \n");
