@@ -4,27 +4,21 @@
     {
         static void Main(string[] args)
         {
-            
+
             Console.WriteLine("-----------------------------------------------");
             Console.WriteLine("\tProgram do zarządzania pojazdami");
             Console.WriteLine("-----------------------------------------------\n");
             VehiclesService vehiclesService = new VehiclesService();
+            VehicleDemandService vehicleDemandService = new VehicleDemandService();
+
             bool isRunning = true;
             while (isRunning)
             {
-                Console.WriteLine("\n*** Wybierz dostępną opcję ***\n");
-                Console.WriteLine("(1) Dodaj pojazd");
-                Console.WriteLine("(2) Sprawdź stan pojazdów");
-                Console.WriteLine("(3) Usuń pojazd");
-                Console.WriteLine("(0) Wyjdź z programu");
+                MainMenuView();
 
                 int choose;
                 Int32.TryParse(Console.ReadLine(), out choose);
-                if (choose == 0)
-                {
-                    Console.WriteLine("Dziękujemy za skorzystanie z programu.");
-                    isRunning = false;
-                }
+
                 switch (choose)
                 {
                     case 1:
@@ -36,11 +30,25 @@
                     case 3:
                         vehiclesService.RemoveVehicle();
                         break;
+                    case 4:
+                        vehicleDemandService.AddNewVehicleDemand(vehiclesService);
+                        break;
                     default:
+                        isRunning = false;
                         break;
                 }
             }
-            Console.ReadLine();
+
+            void MainMenuView()
+            {
+                Console.WriteLine("\n*** Wybierz dostępną opcję ***\n");
+                Console.WriteLine("(1) Dodaj pojazd");
+                Console.WriteLine("(2) Lista pojazdów");
+                Console.WriteLine("(3) Usuń pojazd");
+                Console.WriteLine("(4) Zapotrzebowanie na pojazd");
+                Console.WriteLine("(0) Wyjdź z programu");
+            }
         }
+
     }
 }

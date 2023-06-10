@@ -8,13 +8,11 @@ namespace Week2.CarManager
 {
     public class VehiclesService
     {
-
         public List<Vehicles> VehiclesList { get; set; }
         public VehiclesService()
         {
             VehiclesList = new List<Vehicles>();
         }
-
         public void AddNewVehicle()
         {
             Console.WriteLine("\nWybierz typ pojazdu: ");
@@ -27,16 +25,14 @@ namespace Week2.CarManager
             bool isTypeValid = false;
             while (!isTypeValid)
             {
-                string userInput = Console.ReadLine();
-                isTypeValid = Enum.TryParse(userInput, out selectedType) && Enum.IsDefined(typeof(VehicleType), selectedType);
+               // string userInput = Console.ReadLine();
+                isTypeValid = Enum.TryParse(Console.ReadLine(), out selectedType) && Enum.IsDefined(typeof(VehicleType), selectedType);
                 if (!isTypeValid)
                 {
                     Console.WriteLine("Niepoprawny wybór. Wybierz prawidłowy typ pojazdu.");
                 }
             }
-
-            Console.WriteLine("Podaj numer rejestracyjny:");
-            var plateNumber = Console.ReadLine();
+            var plateNumber = CreatePlateNumber();
 
             Vehicles vehicles = new Vehicles
             {
@@ -46,11 +42,8 @@ namespace Week2.CarManager
             VehiclesList.Add(vehicles);
         }
 
-
-
         public void RemoveVehicle()
         {
-
             if (VehiclesList.Count > 0)
             {
                 Console.WriteLine($"\nKtóry pojazd chcesz usunąć z bazy: \n");
@@ -70,14 +63,14 @@ namespace Week2.CarManager
                 Console.WriteLine($"Czy chcesz usunąć pojazd: {ShowVehicles(removeItem)}\n1: tak");
                 int removeChoose;
                 Int32.TryParse(Console.ReadLine(), out removeChoose);
-                if (removeItem > 0 && removeItem <= VehiclesList.Count)
+                if (removeChoose == 1 && removeItem > 0 && removeItem <= VehiclesList.Count)
                 {
                     VehiclesList.RemoveAt(removeItem - 1);
                     Console.WriteLine("Pojazd został usunięty");
                 }
                 else
                 {
-                    Console.WriteLine("Nie znaleziono pojazdu o podanym numerze.");
+                    Console.WriteLine("Pojazd nie został usunięty.");
                 }
             }
             else
@@ -89,11 +82,11 @@ namespace Week2.CarManager
         {
             if (VehiclesList.Count > 0)
             {
-                Console.WriteLine("\nLista pojazdów: \n");
+                Console.WriteLine("\nLista pojazdów: \nId\tTyp\tNr rejestr.\t");
                 for (int i = 0; i < VehiclesList.Count; i++)
                 {
                     var vehicle = VehiclesList[i];
-                    Console.WriteLine($"Pojazd: {i + 1}; {vehicle.Type}; {vehicle.PlateNumber}");
+                    Console.WriteLine($"{i + 1}\t{vehicle.Type}\t{vehicle.PlateNumber}");
                 }
             }
             else
@@ -103,15 +96,30 @@ namespace Week2.CarManager
         }
         public string ShowVehicles(int a)
         {
+            Console.WriteLine("\nLista pojazdów: \nId\tTyp\tNr rejestr.\t");
             if (a > 0 && a <= VehiclesList.Count)
             {
                 var vehicle = VehiclesList[a - 1];
-                return $"Pojazd: {a}; {vehicle.Type}; {vehicle.PlateNumber}";
+                return $"{a}\t{vehicle.Type}\t{vehicle.PlateNumber}";
             }
             else
             {
                 return "Nie znaleziono pojazdu o podanym numerze.";
             }
+        }
+        public string CreatePlateNumber()
+        {
+            string? plateNumber;
+            do
+            {
+                Console.Write("Podaj numer tablicy rejestracyjnej (7 znaków): ");
+                plateNumber = Console.ReadLine();
+            }
+            while (plateNumber.Length != 7);
+
+            plateNumber = plateNumber.ToUpper().Insert(3, " ");
+
+            return plateNumber;
         }
     }
 }
