@@ -1,4 +1,6 @@
-﻿namespace Week2.CarManager
+﻿
+
+namespace Week2.CarManager
 {
     internal class Program
     {
@@ -10,6 +12,7 @@
             Console.WriteLine("-----------------------------------------------\n");
             VehiclesService vehiclesService = new VehiclesService();
             VehicleDemandService vehicleDemandService = new VehicleDemandService();
+            VehicleDemandLoggerService vehicleDemandLoggerService = new VehicleDemandLoggerService();
 
             bool isRunning = true;
             while (isRunning)
@@ -33,6 +36,9 @@
                     case 4:
                         vehicleDemandService.AddNewVehicleDemand(vehiclesService);
                         break;
+                        case 5:
+                        vehicleDemandLoggerService.LogVehicleDemand(vehiclesService);
+                        break;
                     default:
                         isRunning = false;
                         break;
@@ -46,6 +52,7 @@
                 Console.WriteLine("(2) Lista pojazdów");
                 Console.WriteLine("(3) Usuń pojazd");
                 Console.WriteLine("(4) Zapotrzebowanie na pojazd");
+                Console.WriteLine("(4) Zapotrzebowanie na pojazd - do pliku");
                 Console.WriteLine("(0) Wyjdź z programu");
             }
         }

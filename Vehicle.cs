@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Week2.CarManager
 {
-    public class Vehicles
+    public class Vehicle
     {
         public int Id { get; set; }
         public VehicleType Type { get; set; }

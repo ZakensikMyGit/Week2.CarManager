@@ -1,27 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Week2.CarManager
+﻿namespace Week2.CarManager
 {
-    public class VehicleDemandService
+    public partial class VehicleDemandService
     {
-        public List<VehicleDemand> VehicleDemandsList { get; set; }
+        private List<VehicleDemand> VehicleDemandsList { get; set; }
 
         public VehicleDemandService()
         {
             VehicleDemandsList = new List<VehicleDemand>();
         }
-
         public void AddNewVehicleDemand(VehiclesService vehiclesService)
         {
-            VehicleDemand newDemand = new VehicleDemand();
+            DateTime departureTime = GetValidDateTime("Podaj czas wyjazdu (format: YYYY-MM-DD HH:MM): ");
+            DateTime returnTime = GetValidDateTime("Podaj czas powrotu (format: YYYY-MM-DD HH:MM): ", departureTime);
 
             Console.WriteLine("Wybierz pojazd: ");
             int index = 1;
+
+            if (vehiclesService.VehiclesList.Count == 0)
+            {
+                Console.WriteLine("Brak dostępnych pojazdów.");
+                return;
+            }
             foreach (var vehicle in vehiclesService.VehiclesList)
             {
                 Console.WriteLine($"{index}. {vehicle.PlateNumber}");
@@ -31,52 +30,45 @@ namespace Week2.CarManager
             int selectedIndex;
             Int32.TryParse(Console.ReadLine(), out selectedIndex);
 
-            if (selectedIndex > 0 && selectedIndex <= vehiclesService.VehiclesList.Count)
-            {
-                newDemand.Vehicle = vehiclesService.VehiclesList[selectedIndex - 1];
-            }
-            else
+            if (selectedIndex <= 0 || selectedIndex > vehiclesService.VehiclesList.Count)
             {
                 Console.WriteLine("Nie ma takiego pojazdu w naszej bazie");
+                return;
             }
 
-            newDemand.DriverFirstName = GetNoEpmtyInput("Podaj imię kierowcy: ");
-            newDemand.DriverLastName = GetNoEpmtyInput("Podaj nazwisko kierowcy: ");
-            newDemand.DestinatioLocation = GetNoEpmtyInput("Podaj miejsce przeznaczenia: ");
+            Vehicle selectedVehicle = vehiclesService.VehiclesList[selectedIndex - 1];
 
-            bool isTimeValid = false;
-            while (!isTimeValid)
+            if (!IsVehicleAvailable(selectedVehicle, departureTime, returnTime))
             {
-                Console.Write("Podaj czas wyjazdu (format: YYYY-MM-DD HH:MM): ");
-                DateTime departureTime;
-                DateTime.TryParse(Console.ReadLine(), out departureTime);
-                newDemand.DepartureTime = departureTime;
-
-                Console.Write("Podaj czas powrotu (format: YYYY-MM-DD HH:MM): ");
-                DateTime returnTime;
-                DateTime.TryParse(Console.ReadLine(), out returnTime);
-                newDemand.ReturnTime = returnTime;
-
-                DateTime actualDateTime = DateTime.Now;
-                if (returnTime > departureTime && departureTime > actualDateTime)
-                {
-                    isTimeValid = true;
-                }
-                else
-                {
-                    Console.WriteLine("Podaj poprawne dane wyjazdu i powrotu pojazdu");
-                }
+                Console.WriteLine("Wybrany pojazd nie jest dostępny w podanym okresie czasu.");
+                return;
             }
 
-            newDemand.Purpose = GetNoEpmtyInput("Podaj cel wyjazdu: ");
-            newDemand.DisponentFirstName = GetNoEpmtyInput("Podaj imię dysponenta: ");
-            newDemand.DisponentLastName = GetNoEpmtyInput("Podaj nazwisko dysponenta: ");
-            newDemand.DisponentPhone = GetNoEpmtyInput("Podaj telefon kontaktowy do dysponenta:  ");
+            string driverFirstName = GetNotEmptyInput("Podaj imię kierowcy: ");
+            string driverLastName = GetNotEmptyInput("Podaj nazwisko kierowcy: ");
+            string destinationLocation = GetNotEmptyInput("Podaj miejsce przeznaczenia: ");
+            string purpose = GetNotEmptyInput("Podaj cel wyjazdu: ");
+            string disponentFirstName = GetNotEmptyInput("Podaj imię dysponenta: ");
+            string disponentLastName = GetNotEmptyInput("Podaj nazwisko dysponenta: ");
+            string disponentPhone = GetNotEmptyInput("Podaj telefon kontaktowy do dysponenta:  ");
+
+            VehicleDemand newDemand = new VehicleDemand(
+                selectedVehicle,
+                driverFirstName,
+                driverLastName,
+                destinationLocation,
+                departureTime,
+                returnTime,
+                purpose,
+                disponentFirstName,
+                disponentLastName,
+                disponentPhone);
 
             VehicleDemandsList.Add(newDemand);
             ShowVehicleDemandsList(newDemand);
         }
-        public void ShowVehicleDemandsList()
+
+        public void ShowVehicleDemandsList(VehicleDemand newDemand)
         {
             foreach (VehicleDemand de in VehicleDemandsList)
             {
@@ -90,19 +82,8 @@ namespace Week2.CarManager
                     $"\nDysponent:\t{de.DisponentFirstName} {de.DisponentLastName} {de.DisponentPhone}");
             }
         }
-        public void ShowVehicleDemandsList(VehicleDemand de)
-        {
-            Console.Write($"Zapotrzebowanie na pojazd: " +
-                $"\nPojazd:\t{de.Vehicle.PlateNumber}" +
-                $"\nKierowca:\t{de.DriverFirstName} {de.DriverLastName}" +
-                $"\nMiejsce:\t{de.DestinatioLocation}" +
-                $"\nData wyjazdu:\t{de.DepartureTime}" +
-                $"\nData powrotu:\t{de.ReturnTime}" +
-                $"\nCel wyjazdu:\t{de.Purpose}" +
-                $"\nDysponent:\t{de.DisponentFirstName} {de.DisponentLastName} {de.DisponentPhone}");
 
-        }
-        public string GetNoEpmtyInput(string message)
+        public string GetNotEmptyInput(string message)
         {
             string? input;
             do
@@ -118,5 +99,38 @@ namespace Week2.CarManager
 
             return input;
         }
+        public DateTime GetValidDateTime(string message, DateTime? minDate = null)
+        {
+            DateTime dateTime;
+            do
+            {
+                Console.Write(message);
+                DateTime.TryParse(Console.ReadLine(), out dateTime);
+
+                if (minDate.HasValue && dateTime <= minDate.Value)
+                {
+                    Console.WriteLine("Data i godzina powinny być późniejsze niż " + minDate.Value);
+                    dateTime = default(DateTime);
+                }
+            }
+            while (dateTime == default(DateTime));
+            return dateTime;
+        }
+        private bool IsVehicleAvailable(Vehicle vehicle, DateTime departureTime, DateTime returnTime)
+        {
+            foreach (var demand in VehicleDemandsList)
+            {
+                if (demand.Vehicle == vehicle)
+                {
+                    if ((departureTime >= demand.DepartureTime && departureTime <= demand.ReturnTime) ||
+                        (returnTime >= demand.DepartureTime && returnTime <= demand.ReturnTime))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }
+
