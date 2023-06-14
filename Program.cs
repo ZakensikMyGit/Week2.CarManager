@@ -6,11 +6,14 @@ namespace Week2.CarManager
     {
         static void Main(string[] args)
         {
+            DailyTasks.Message();
+            string click = Console.ReadLine();
+            Console.Clear();
 
             Console.WriteLine("-----------------------------------------------");
             Console.WriteLine("\tProgram do zarządzania pojazdami");
             Console.WriteLine("-----------------------------------------------\n");
-            VehiclesService vehiclesService = new VehiclesService();
+            VehiclesService vehiclesService = new VehiclesService() ;
             VehicleDemandService vehicleDemandService = new VehicleDemandService();
             VehicleDemandLoggerService vehicleDemandLoggerService = new VehicleDemandLoggerService();
 
@@ -36,7 +39,7 @@ namespace Week2.CarManager
                     case 4:
                         vehicleDemandService.AddNewVehicleDemand(vehiclesService);
                         break;
-                        case 5:
+                    case 5:
                         vehicleDemandLoggerService.LogVehicleDemand(vehiclesService);
                         break;
                     default:
@@ -52,7 +55,7 @@ namespace Week2.CarManager
                 Console.WriteLine("(2) Lista pojazdów");
                 Console.WriteLine("(3) Usuń pojazd");
                 Console.WriteLine("(4) Zapotrzebowanie na pojazd");
-                Console.WriteLine("(4) Zapotrzebowanie na pojazd - do pliku");
+                Console.WriteLine("(5) Zapotrzebowanie na pojazd - do pliku");
                 Console.WriteLine("(0) Wyjdź z programu");
             }
         }

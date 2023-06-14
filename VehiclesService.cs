@@ -36,7 +36,7 @@ namespace Week2.CarManager
 
             Vehicle vehicles = new Vehicle
             {
-                Type = selectedType,
+                VehicleType = selectedType,
                 PlateNumber = plateNumber
             };
             VehiclesList.Add(vehicles);
@@ -86,7 +86,7 @@ namespace Week2.CarManager
                 for (int i = 0; i < VehiclesList.Count; i++)
                 {
                     var vehicle = VehiclesList[i];
-                    Console.WriteLine($"{i + 1}\t{vehicle.Type}\t{vehicle.PlateNumber}");
+                    Console.WriteLine($"{i + 1}\t{vehicle.VehicleType}\t{vehicle.PlateNumber}");
                 }
             }
             else
@@ -94,13 +94,13 @@ namespace Week2.CarManager
                 Console.WriteLine("\n!!! Brak pojazdów !!!\n");
             }
         }
-        public string ShowVehicles(int a)
+        public string ShowVehicles(int id)
         {
             Console.WriteLine("\nLista pojazdów: \nId\tTyp\tNr rejestr.\t");
-            if (a > 0 && a <= VehiclesList.Count)
+            if (id > 0 && id <= VehiclesList.Count)
             {
-                var vehicle = VehiclesList[a - 1];
-                return $"{a}\t{vehicle.Type}\t{vehicle.PlateNumber}";
+                var vehicle = VehiclesList[id - 1];
+                return $"{id}\t{vehicle.VehicleType}\t{vehicle.PlateNumber}";
             }
             else
             {

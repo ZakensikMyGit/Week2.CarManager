@@ -1,6 +1,6 @@
 ﻿namespace Week2.CarManager
 {
-    public partial class VehicleDemandService
+    public partial class VehicleDemandService : BaseService
     {
         private List<VehicleDemand> VehicleDemandsList { get; set; }
 
@@ -44,13 +44,13 @@
                 return;
             }
 
-            string driverFirstName = GetNotEmptyInput("Podaj imię kierowcy: ");
-            string driverLastName = GetNotEmptyInput("Podaj nazwisko kierowcy: ");
-            string destinationLocation = GetNotEmptyInput("Podaj miejsce przeznaczenia: ");
-            string purpose = GetNotEmptyInput("Podaj cel wyjazdu: ");
-            string disponentFirstName = GetNotEmptyInput("Podaj imię dysponenta: ");
-            string disponentLastName = GetNotEmptyInput("Podaj nazwisko dysponenta: ");
-            string disponentPhone = GetNotEmptyInput("Podaj telefon kontaktowy do dysponenta:  ");
+            string driverFirstName = GetInput("Podaj imię kierowcy: ");
+            string driverLastName = GetInput("Podaj nazwisko kierowcy: ");
+            string destinationLocation = GetInput("Podaj miejsce przeznaczenia: ");
+            string purpose = GetInput("Podaj cel wyjazdu: ");
+            string disponentFirstName = GetInput("Podaj imię dysponenta: ");
+            string disponentLastName = GetInput("Podaj nazwisko dysponenta: ");
+            string disponentPhone = GetInput("Podaj telefon kontaktowy do dysponenta:  ");
 
             VehicleDemand newDemand = new VehicleDemand(
                 selectedVehicle,
@@ -83,9 +83,9 @@
             }
         }
 
-        public string GetNotEmptyInput(string message)
+        public new string GetInput(string message)
         {
-            string? input;
+            string input;
             do
             {
                 Console.Write($"\n{message}");
@@ -98,23 +98,6 @@
             while (string.IsNullOrEmpty(input));
 
             return input;
-        }
-        public DateTime GetValidDateTime(string message, DateTime? minDate = null)
-        {
-            DateTime dateTime;
-            do
-            {
-                Console.Write(message);
-                DateTime.TryParse(Console.ReadLine(), out dateTime);
-
-                if (minDate.HasValue && dateTime <= minDate.Value)
-                {
-                    Console.WriteLine("Data i godzina powinny być późniejsze niż " + minDate.Value);
-                    dateTime = default(DateTime);
-                }
-            }
-            while (dateTime == default(DateTime));
-            return dateTime;
         }
         private bool IsVehicleAvailable(Vehicle vehicle, DateTime departureTime, DateTime returnTime)
         {

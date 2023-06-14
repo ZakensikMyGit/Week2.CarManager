@@ -1,6 +1,6 @@
 ﻿namespace Week2.CarManager
 {
-        public class VehicleDemandLoggerService
+        public class VehicleDemandLoggerService : BaseService
         {
             private const string FilePath = @"plik.txt";
 
@@ -12,20 +12,20 @@
             // POPRAWIĆ kod, usunąć wybór pojazdu
 
 
-                Console.WriteLine("Wybierz pojazd: ");
-                int index = 1;
+            //Console.WriteLine("Wybierz pojazd: ");
+            //int index = 1;
 
-                foreach (var vehicle in vehiclesService.VehiclesList)
-                {
-                    Console.WriteLine($"{index}. {vehicle.PlateNumber}");
-                    index++;
-                }
+            //foreach (var vehicle in vehiclesService.VehiclesList)
+            //{
+            //    Console.WriteLine($"{index}. {vehicle.PlateNumber}");
+            //    index++;
+            //}
 
-                int selectedIndex;
-                Int32.TryParse(Console.ReadLine(), out selectedIndex);
+            //int selectedIndex;
+            //Int32.TryParse(Console.ReadLine(), out selectedIndex);
 
-                Vehicle selectedVehicle = vehiclesService.VehiclesList[selectedIndex - 1];
-
+            //Vehicle selectedVehicle = vehiclesService.VehiclesList[selectedIndex - 1];
+                Vehicle? selectedVehicle = default;
                 string driverFirstName = GetInput("Podaj imię kierowcy (może być puste): ");
                 string driverLastName = GetInput("Podaj nazwisko kierowcy (może być puste): ");
                 string destinatioLocation = GetInput("Podaj miejsce przeznaczenia (może być puste): ");
@@ -48,36 +48,11 @@
 
                 LogToFile(newDemand);
             }
-
-            public string GetInput(string message)
-            {
-                Console.Write($"\n{message}");
-                return Console.ReadLine(); // Nie sprawdzamy, czy jest puste
-            }
-
-            public DateTime GetValidDateTime(string message, DateTime? minDate = null)
-            {
-                DateTime dateTime;
-                do
-                {
-                    Console.Write(message);
-                    DateTime.TryParse(Console.ReadLine(), out dateTime);
-
-                    if (minDate.HasValue && dateTime <= minDate.Value)
-                    {
-                        Console.WriteLine("Data i godzina powinny być późniejsze niż " + minDate.Value);
-                        dateTime = default(DateTime);
-                    }
-                }
-                while (dateTime == default(DateTime));
-                return dateTime;
-            }
-
             private void LogToFile(VehicleDemand newDemand)
             {
                 using StreamWriter writer = new StreamWriter(FilePath, append: true);
                 writer.WriteLine($"Zapotrzebowanie na pojazd: ");
-                writer.WriteLine($"Pojazd:\t{newDemand.Vehicle.PlateNumber}");
+                writer.WriteLine($"Pojazd:\t"); // zostawić puste pole, 
                 writer.WriteLine($"Kierowca:\t{newDemand.DriverFirstName} {newDemand.DriverLastName}");
                 writer.WriteLine($"Miejsce:\t{newDemand.DestinatioLocation}");
                 writer.WriteLine($"Data wyjazdu:\t{newDemand.DepartureTime}");

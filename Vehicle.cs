@@ -9,15 +9,7 @@ namespace Week2.CarManager
     public class Vehicle
     {
         public int Id { get; set; }
-        public VehicleType Type { get; set; }
+        public VehicleType VehicleType { get; set; }
         public string? PlateNumber { get; set; }
-        public int DrivenKilometers { get; set; }
-    }
-    public enum VehicleType
-    {
-        Car = 1,
-        Bus = 2,
-        Truck = 3,
-        Other = 4
     }
 }
