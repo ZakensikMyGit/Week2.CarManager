@@ -1,4 +1,4 @@
-﻿namespace Week2.CarManager
+﻿namespace Week2.CarManager.Models
 {
     public enum VehicleType
     {

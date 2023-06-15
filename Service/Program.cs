@@ -1,21 +1,16 @@
-﻿
-
-namespace Week2.CarManager
+﻿namespace Week2.CarManager.Service
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            DailyTasks.Message();
-            string click = Console.ReadLine();
-            Console.Clear();
-
             Console.WriteLine("-----------------------------------------------");
             Console.WriteLine("\tProgram do zarządzania pojazdami");
             Console.WriteLine("-----------------------------------------------\n");
-            VehiclesService vehiclesService = new VehiclesService() ;
+            VehiclesService vehiclesService = new VehiclesService();
             VehicleDemandService vehicleDemandService = new VehicleDemandService();
             VehicleDemandLoggerService vehicleDemandLoggerService = new VehicleDemandLoggerService();
+            FileService fileService = new FileService();
 
             bool isRunning = true;
             while (isRunning)
@@ -23,7 +18,7 @@ namespace Week2.CarManager
                 MainMenuView();
 
                 int choose;
-                Int32.TryParse(Console.ReadLine(), out choose);
+                int.TryParse(Console.ReadLine(), out choose);
 
                 switch (choose)
                 {
@@ -42,6 +37,9 @@ namespace Week2.CarManager
                     case 5:
                         vehicleDemandLoggerService.LogVehicleDemand(vehiclesService);
                         break;
+                    case 6:
+                        fileService.ReadLogFromFile();
+                        break;
                     default:
                         isRunning = false;
                         break;
@@ -56,6 +54,7 @@ namespace Week2.CarManager
                 Console.WriteLine("(3) Usuń pojazd");
                 Console.WriteLine("(4) Zapotrzebowanie na pojazd");
                 Console.WriteLine("(5) Zapotrzebowanie na pojazd - do pliku");
+                Console.WriteLine("(6) Wczytaj zapotrzebowania z pliku");
                 Console.WriteLine("(0) Wyjdź z programu");
             }
         }

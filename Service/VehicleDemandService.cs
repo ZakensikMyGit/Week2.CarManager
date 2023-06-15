@@ -1,4 +1,6 @@
-﻿namespace Week2.CarManager
+﻿using Week2.CarManager.Models;
+
+namespace Week2.CarManager.Service
 {
     public partial class VehicleDemandService : BaseService
     {
@@ -28,7 +30,7 @@
             }
 
             int selectedIndex;
-            Int32.TryParse(Console.ReadLine(), out selectedIndex);
+            int.TryParse(Console.ReadLine(), out selectedIndex);
 
             if (selectedIndex <= 0 || selectedIndex > vehiclesService.VehiclesList.Count)
             {
@@ -65,31 +67,27 @@
                 disponentPhone);
 
             VehicleDemandsList.Add(newDemand);
-            ShowVehicleDemandsList(newDemand);
+            foreach (var demand in VehicleDemandsList)
+            {
+                ShowVehicleDemand(demand);
+            }
         }
 
         public void ShowVehicleDemandsList(VehicleDemand newDemand)
         {
-            foreach (VehicleDemand de in VehicleDemandsList)
+            foreach (var demand in VehicleDemandsList)
             {
-                Console.Write($"Zapotrzebowanie na pojazd: " +
-                    $"\nPojazd:\t{de.Vehicle.PlateNumber}" +
-                    $"\nKierowca:\t{de.DriverFirstName} {de.DriverLastName}" +
-                    $"\nMiejsce:\t{de.DestinatioLocation}" +
-                    $"\nData wyjazdu:\t{de.DepartureTime}" +
-                    $"\nData powrotu:\t{de.ReturnTime}" +
-                    $"\nCel wyjazdu:\t{de.Purpose}" +
-                    $"\nDysponent:\t{de.DisponentFirstName} {de.DisponentLastName} {de.DisponentPhone}");
+                ShowVehicleDemand(demand);
             }
         }
 
-        public new string GetInput(string message)
+        public override string GetInput(string message)
         {
             string input;
             do
             {
                 Console.Write($"\n{message}");
-                input = Console.ReadLine();
+                input = Console.ReadLine() ?? string.Empty;
                 if (string.IsNullOrEmpty(input))
                 {
                     Console.WriteLine("\nUzupełnij pole...");
@@ -105,8 +103,8 @@
             {
                 if (demand.Vehicle == vehicle)
                 {
-                    if ((departureTime >= demand.DepartureTime && departureTime <= demand.ReturnTime) ||
-                        (returnTime >= demand.DepartureTime && returnTime <= demand.ReturnTime))
+                    if (departureTime >= demand.DepartureTime && departureTime <= demand.ReturnTime ||
+                        returnTime >= demand.DepartureTime && returnTime <= demand.ReturnTime)
                     {
                         return false;
                     }

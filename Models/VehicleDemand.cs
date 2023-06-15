@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Week2.CarManager
+namespace Week2.CarManager.Models
 {
     public class VehicleDemand
     {
@@ -21,16 +21,16 @@ namespace Week2.CarManager
 
         public VehicleDemand(Vehicle? vehicle, string? driverFirstName, string? driverLastName, string? destinatioLocation, DateTime departureTime, DateTime returnTime, string? purpose, string? disponentFirstName, string? disponentLastName, string? disponentPhone)
         {
-            this.Vehicle = vehicle;
-            this.DriverFirstName = driverFirstName;
-            this.DriverLastName = driverLastName;
-            this.DestinatioLocation = destinatioLocation;
-            this.DepartureTime = departureTime;
-            this.ReturnTime = returnTime;
-            this.Purpose = purpose;
-            this.DisponentFirstName = disponentFirstName;
-            this.DisponentLastName = disponentLastName;
-            this.DisponentPhone = disponentPhone;        
+            Vehicle = vehicle;
+            DriverFirstName = driverFirstName;
+            DriverLastName = driverLastName;
+            DestinatioLocation = destinatioLocation;
+            DepartureTime = departureTime;
+            ReturnTime = returnTime;
+            Purpose = purpose;
+            DisponentFirstName = disponentFirstName;
+            DisponentLastName = disponentLastName;
+            DisponentPhone = disponentPhone;
         }
     }
 }
