@@ -1,4 +1,6 @@
-﻿namespace Week2.CarManager.Service
+﻿using Week2.CarManager.Service;
+
+namespace Week2.CarManager
 {
     internal class Program
     {
@@ -10,11 +12,11 @@
             VehiclesService vehiclesService = new VehiclesService();
             VehicleDemandService vehicleDemandService = new VehicleDemandService();
             VehicleDemandLoggerService vehicleDemandLoggerService = new VehicleDemandLoggerService();
-            FileService fileService = new FileService();
 
             bool isRunning = true;
             while (isRunning)
             {
+                Console.WriteLine("\n*** Wybierz dostępną opcję ***\n");
                 MainMenuView();
 
                 int choose;
@@ -37,27 +39,20 @@
                     case 5:
                         vehicleDemandLoggerService.LogVehicleDemand(vehiclesService);
                         break;
-                    case 6:
-                        fileService.ReadLogFromFile();
-                        break;
                     default:
                         isRunning = false;
                         break;
                 }
             }
-
             void MainMenuView()
             {
-                Console.WriteLine("\n*** Wybierz dostępną opcję ***\n");
                 Console.WriteLine("(1) Dodaj pojazd");
                 Console.WriteLine("(2) Lista pojazdów");
                 Console.WriteLine("(3) Usuń pojazd");
                 Console.WriteLine("(4) Zapotrzebowanie na pojazd");
-                Console.WriteLine("(5) Zapotrzebowanie na pojazd - do pliku");
-                Console.WriteLine("(6) Wczytaj zapotrzebowania z pliku");
+                Console.WriteLine("(5) Zapotrzebowanie na pojazd - zapis do pliku");
                 Console.WriteLine("(0) Wyjdź z programu");
             }
         }
-
     }
 }

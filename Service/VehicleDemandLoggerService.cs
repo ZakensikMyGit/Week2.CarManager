@@ -5,13 +5,12 @@ namespace Week2.CarManager.Service
     public class VehicleDemandLoggerService : BaseService
     {
 
-
         public void LogVehicleDemand(VehiclesService vehiclesService)
         {
             DateTime departureTime = GetValidDateTime("Podaj czas wyjazdu (format: YYYY-MM-DD HH:MM): ");
             DateTime returnTime = GetValidDateTime("Podaj czas powrotu (format: YYYY-MM-DD HH:MM): ", departureTime);
 
-            string selectedVehicle = GetInput()
+            Vehicle? selectedVehicle = null;
             string driverFirstName = GetInput("Podaj imię kierowcy: ");
             string driverLastName = GetInput("Podaj nazwisko kierowcy: ");
             string destinatioLocation = GetInput("Podaj miejsce przeznaczenia: ");
@@ -34,7 +33,6 @@ namespace Week2.CarManager.Service
 
             LogToFile(newDemand);
         }
-
         private void LogToFile(VehicleDemand newDemand)
         {
             using StreamWriter writer = new StreamWriter(FilePath, append: true);
@@ -63,7 +61,7 @@ namespace Week2.CarManager.Service
             writer.WriteLine($"Dysponent:\t{newDemand.DisponentFirstName} {newDemand.DisponentLastName}");
             writer.WriteLine($"Telefon do dysponenta:\t{newDemand.DisponentPhone}");
         }
-        public override string GetInput()
+        public override string GetInput(string message)
         {
             Console.Write($"\n{message}");
             return Console.ReadLine() ?? string.Empty;

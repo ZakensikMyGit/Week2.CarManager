@@ -72,7 +72,6 @@ namespace Week2.CarManager.Service
                 ShowVehicleDemand(demand);
             }
         }
-
         public void ShowVehicleDemandsList(VehicleDemand newDemand)
         {
             foreach (var demand in VehicleDemandsList)
@@ -80,7 +79,6 @@ namespace Week2.CarManager.Service
                 ShowVehicleDemand(demand);
             }
         }
-
         public override string GetInput(string message)
         {
             string input;
@@ -94,7 +92,6 @@ namespace Week2.CarManager.Service
                 }
             }
             while (string.IsNullOrEmpty(input));
-
             return input;
         }
         private bool IsVehicleAvailable(Vehicle vehicle, DateTime departureTime, DateTime returnTime)

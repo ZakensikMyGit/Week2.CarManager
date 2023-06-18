@@ -29,7 +29,7 @@ namespace Week2.CarManager.Service
             };
             VehiclesList.Add(vehicles);
         }
-        private static VehicleType SelectVehicleType()
+        public static VehicleType SelectVehicleType()
         {
             Console.WriteLine("\nWybierz typ pojazdu: ");
             foreach (VehicleType types in Enum.GetValues(typeof(VehicleType)))
@@ -60,7 +60,6 @@ namespace Week2.CarManager.Service
             plateNumber = plateNumber.ToUpper().Insert(3, " ");
             return plateNumber;
         }
-
         public void RemoveVehicle()
         {
             if (VehiclesList.Count > 0)

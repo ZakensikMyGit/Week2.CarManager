@@ -1,0 +1,9 @@
+Zapotrzebowanie na pojazd: 
+Pojazd:	
+Kierowca:	Artur Zak
+Miejsce:	Szczecin
+Data wyjazdu:	20.06.2023 12:00:00
+Data powrotu:	20.06.2023 13:00:00
+Cel wyjazdu:	Przewóz osób
+Dysponent:	Tom Bon
+Telefon do dysponenta:	321654987
