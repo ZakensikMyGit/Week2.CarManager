@@ -5,6 +5,10 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Week2.CarManager", "Week2.CarManager.csproj", "{55D0FC58-1724-493A-8468-DD64A72B917B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCarManager", "..\WpfCarManager\WpfCarManager.csproj", "{1D12A638-3B6D-4D2C-A8FE-ABCC623828F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModulDodajPojazd", "..\ModulDodajPojazd\ModulDodajPojazd.csproj", "{48A54498-355C-415F-9B41-52E461286159}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{55D0FC58-1724-493A-8468-DD64A72B917B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55D0FC58-1724-493A-8468-DD64A72B917B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55D0FC58-1724-493A-8468-DD64A72B917B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D12A638-3B6D-4D2C-A8FE-ABCC623828F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D12A638-3B6D-4D2C-A8FE-ABCC623828F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D12A638-3B6D-4D2C-A8FE-ABCC623828F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D12A638-3B6D-4D2C-A8FE-ABCC623828F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48A54498-355C-415F-9B41-52E461286159}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48A54498-355C-415F-9B41-52E461286159}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48A54498-355C-415F-9B41-52E461286159}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48A54498-355C-415F-9B41-52E461286159}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

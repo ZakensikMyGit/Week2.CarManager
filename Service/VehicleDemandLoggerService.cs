@@ -10,7 +10,6 @@ namespace Week2.CarManager.Service
             DateTime departureTime = GetValidDateTime("Podaj czas wyjazdu (format: YYYY-MM-DD HH:MM): ");
             DateTime returnTime = GetValidDateTime("Podaj czas powrotu (format: YYYY-MM-DD HH:MM): ", departureTime);
 
-            Vehicle? selectedVehicle = null;
             string driverFirstName = GetInput("Podaj imię kierowcy: ");
             string driverLastName = GetInput("Podaj nazwisko kierowcy: ");
             string destinatioLocation = GetInput("Podaj miejsce przeznaczenia: ");
@@ -19,8 +18,8 @@ namespace Week2.CarManager.Service
             string disponentLastName = GetInput("Podaj nazwisko dysponenta: ");
             string disponentPhone = GetInput("Podaj telefon kontaktowy do dysponenta:  ");
 
+
             VehicleDemand newDemand = new VehicleDemand(
-                selectedVehicle,
                 driverFirstName,
                 driverLastName,
                 destinatioLocation,
@@ -29,7 +28,8 @@ namespace Week2.CarManager.Service
                 purpose,
                 disponentFirstName,
                 disponentLastName,
-                disponentPhone);
+                disponentPhone
+                );
 
             LogToFile(newDemand);
         }

@@ -10,6 +10,6 @@ namespace Week2.CarManager.Models
     {
         public int Id { get; set; }
         public VehicleType VehicleType { get; set; }
-        public string? PlateNumber { get; set; }
+        public string PlateNumber { get; set; }
     }
 }

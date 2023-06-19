@@ -1,18 +1,18 @@
-F:\Nauka_Wlasna_ProjektyVS\Visual Studio\SzkolaDotNeta\W2.HomeWork.CarManager\bin\Debug\net6.0\Week2.CarManager.exe
-F:\Nauka_Wlasna_ProjektyVS\Visual Studio\SzkolaDotNeta\W2.HomeWork.CarManager\bin\Debug\net6.0\Week2.CarManager.deps.json
-F:\Nauka_Wlasna_ProjektyVS\Visual Studio\SzkolaDotNeta\W2.HomeWork.CarManager\bin\Debug\net6.0\Week2.CarManager.runtimeconfig.json
-F:\Nauka_Wlasna_ProjektyVS\Visual Studio\SzkolaDotNeta\W2.HomeWork.CarManager\bin\Debug\net6.0\Week2.CarManager.dll
-F:\Nauka_Wlasna_ProjektyVS\Visual Studio\SzkolaDotNeta\W2.HomeWork.CarManager\bin\Debug\net6.0\Week2.CarManager.pdb
-F:\Nauka_Wlasna_ProjektyVS\Visual Studio\SzkolaDotNeta\W2.HomeWork.CarManager\obj\Debug\net6.0\Week2.CarManager.csproj.AssemblyReference.cache
-F:\Nauka_Wlasna_ProjektyVS\Visual Studio\SzkolaDotNeta\W2.HomeWork.CarManager\obj\Debug\net6.0\Week2.CarManager.GeneratedMSBuildEditorConfig.editorconfig
-F:\Nauka_Wlasna_ProjektyVS\Visual Studio\SzkolaDotNeta\W2.HomeWork.CarManager\obj\Debug\net6.0\Week2.CarManager.AssemblyInfoInputs.cache
-F:\Nauka_Wlasna_ProjektyVS\Visual Studio\SzkolaDotNeta\W2.HomeWork.CarManager\obj\Debug\net6.0\Week2.CarManager.AssemblyInfo.cs
-F:\Nauka_Wlasna_ProjektyVS\Visual Studio\SzkolaDotNeta\W2.HomeWork.CarManager\obj\Debug\net6.0\Week2.CarManager.csproj.CoreCompileInputs.cache
-F:\Nauka_Wlasna_ProjektyVS\Visual Studio\SzkolaDotNeta\W2.HomeWork.CarManager\obj\Debug\net6.0\Week2.CarManager.dll
-F:\Nauka_Wlasna_ProjektyVS\Visual Studio\SzkolaDotNeta\W2.HomeWork.CarManager\obj\Debug\net6.0\refint\Week2.CarManager.dll
-F:\Nauka_Wlasna_ProjektyVS\Visual Studio\SzkolaDotNeta\W2.HomeWork.CarManager\obj\Debug\net6.0\Week2.CarManager.pdb
-F:\Nauka_Wlasna_ProjektyVS\Visual Studio\SzkolaDotNeta\W2.HomeWork.CarManager\obj\Debug\net6.0\Week2.CarManager.genruntimeconfig.cache
-F:\Nauka_Wlasna_ProjektyVS\Visual Studio\SzkolaDotNeta\W2.HomeWork.CarManager\obj\Debug\net6.0\ref\Week2.CarManager.dll
+C:\GIT\CarManager\bin\Debug\net6.0\Week2.CarManager.exe
+C:\GIT\CarManager\bin\Debug\net6.0\Week2.CarManager.deps.json
+C:\GIT\CarManager\bin\Debug\net6.0\Week2.CarManager.runtimeconfig.json
+C:\GIT\CarManager\bin\Debug\net6.0\Week2.CarManager.dll
+C:\GIT\CarManager\bin\Debug\net6.0\Week2.CarManager.pdb
+C:\GIT\CarManager\obj\Debug\net6.0\Week2.CarManager.csproj.AssemblyReference.cache
+C:\GIT\CarManager\obj\Debug\net6.0\Week2.CarManager.GeneratedMSBuildEditorConfig.editorconfig
+C:\GIT\CarManager\obj\Debug\net6.0\Week2.CarManager.AssemblyInfoInputs.cache
+C:\GIT\CarManager\obj\Debug\net6.0\Week2.CarManager.AssemblyInfo.cs
+C:\GIT\CarManager\obj\Debug\net6.0\Week2.CarManager.csproj.CoreCompileInputs.cache
+C:\GIT\CarManager\obj\Debug\net6.0\Week2.CarManager.dll
+C:\GIT\CarManager\obj\Debug\net6.0\refint\Week2.CarManager.dll
+C:\GIT\CarManager\obj\Debug\net6.0\Week2.CarManager.pdb
+C:\GIT\CarManager\obj\Debug\net6.0\Week2.CarManager.genruntimeconfig.cache
+C:\GIT\CarManager\obj\Debug\net6.0\ref\Week2.CarManager.dll
 D:\Nauka_Wlasna_ProjektyVS\Visual Studio\SzkolaDotNeta\W2.HomeWork.CarManager\bin\Debug\net6.0\Week2.CarManager.exe
 D:\Nauka_Wlasna_ProjektyVS\Visual Studio\SzkolaDotNeta\W2.HomeWork.CarManager\bin\Debug\net6.0\Week2.CarManager.deps.json
 D:\Nauka_Wlasna_ProjektyVS\Visual Studio\SzkolaDotNeta\W2.HomeWork.CarManager\bin\Debug\net6.0\Week2.CarManager.runtimeconfig.json

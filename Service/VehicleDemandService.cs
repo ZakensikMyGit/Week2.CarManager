@@ -55,7 +55,6 @@ namespace Week2.CarManager.Service
             string disponentPhone = GetInput("Podaj telefon kontaktowy do dysponenta:  ");
 
             VehicleDemand newDemand = new VehicleDemand(
-                selectedVehicle,
                 driverFirstName,
                 driverLastName,
                 destinationLocation,
@@ -64,7 +63,9 @@ namespace Week2.CarManager.Service
                 purpose,
                 disponentFirstName,
                 disponentLastName,
-                disponentPhone);
+                disponentPhone,
+                selectedVehicle
+                );
 
             VehicleDemandsList.Add(newDemand);
             foreach (var demand in VehicleDemandsList)
